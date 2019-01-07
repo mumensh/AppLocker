@@ -255,4 +255,8 @@ public extension AppLocker {
     
     root.present(locker, animated: true, completion: nil)
   }
+    
+  class func hasPinCode() -> Bool {
+    return AppLocker.valet.containsObject(forKey: ALConstants.kPincode)
+  }
 }

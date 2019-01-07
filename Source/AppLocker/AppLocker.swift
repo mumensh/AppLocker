@@ -28,7 +28,9 @@ public struct ALAppearance { // The structure used to display the controller
   public var title: String?
   public var subtitle: String?
   public var image: UIImage?
-  public var color: UIColor?
+  public var backgroundColor: UIColor?
+  public var foregroundColor: UIColor?
+  public var hightlightColor: UIColor?
   public var isSensorsEnabled: Bool?
   public init() {}
 }
@@ -47,7 +49,9 @@ public class AppLocker: UIViewController {
   @IBOutlet weak var messageLabel: UILabel!
   @IBOutlet weak var submessageLabel: UILabel!
   @IBOutlet var pinIndicators: [Indicator]!
-  @IBOutlet weak var cancelButton: Button!
+  @IBOutlet var pinNumbers: [RoundedButton]!
+  @IBOutlet weak var cancelButton: UIButton!
+  @IBOutlet weak var deleteButton: UIButton!
 
   static let valet = Valet.valet(with: Identifier(nonEmpty: "Druidia")!, accessibility: .whenUnlockedThisDeviceOnly)  
   // MARK: - Pincode
@@ -77,7 +81,6 @@ public class AppLocker: UIViewController {
         submessageLabel.text = "Enter your passcode" // Your submessage for deactive mode
       case .validate:
         submessageLabel.text = "Enter your passcode" // Your submessage for validate mode
-        cancelButton.isHidden = true
         isFirstCreationStep = false
       }
     }
@@ -94,7 +97,7 @@ public class AppLocker: UIViewController {
     pinView?.isNeedClear = !isNeedClear
     
     UIView.animate(withDuration: ALConstants.duration, animations: {
-      pinView?.backgroundColor = isNeedClear ? .clear : .white
+      pinView?.backgroundColor = isNeedClear ? .clear : pinView?.highlightedBackgroundColor
     }) { _ in
       isNeedClear ? self.pin = String(self.pin.dropLast()) : self.pincodeChecker(tag ?? 0)
     }
@@ -230,8 +233,14 @@ public extension AppLocker {
         return
     }
     locker.messageLabel.text = config?.title ?? ""
+    locker.messageLabel.textColor = config?.foregroundColor ?? .black
     locker.submessageLabel.text = config?.subtitle ?? ""
-    locker.view.backgroundColor = config?.color ?? .black
+    locker.submessageLabel.textColor = config?.foregroundColor ?? .black
+    locker.view.backgroundColor = config?.backgroundColor ?? .white
+    locker.pinNumbers.forEach({ $0.setTitleColor(config?.foregroundColor ?? .black, for: .normal); $0.setTitleColor(config?.hightlightColor ?? .white, for: .highlighted); $0.setBackgroundColor(color: config?.hightlightColor ?? .white, forState: .highlighted) })
+    locker.pinIndicators.forEach({ $0.highlightedBackgroundColor = config?.hightlightColor })
+    locker.cancelButton.setTitleColor(config?.foregroundColor ?? .black, for: .normal)
+    locker.deleteButton.setTitleColor(config?.foregroundColor ?? .black, for: .normal)
     locker.mode = mode
     
     if config?.isSensorsEnabled ?? false {

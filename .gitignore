@@ -43,5 +43,7 @@ xcuserdata/
 # *.xcworkspace
 
 # Carthage
+PasscodeLock/Carthage/Checkouts
+PasscodeLock/Carthage/Build
 Carthage/Checkouts
 Carthage/Build

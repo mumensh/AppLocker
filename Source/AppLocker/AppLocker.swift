@@ -147,8 +147,12 @@ public class AppLocker: UIViewController {
   }
   
   private func removePin() {
-    AppLocker.valet.removeObject(forKey: ALConstants.kPincode)
+    AppLocker.removePinFromValet()
     dismiss(animated: true, completion: nil)
+  }
+    
+  private static func removePinFromValet() {
+    AppLocker.valet.removeObject(forKey: ALConstants.kPincode)
   }
   
   private func confirmPin() {
@@ -259,5 +263,9 @@ public extension AppLocker {
     
   class func hasPinCode() -> Bool {
     return AppLocker.valet.containsObject(forKey: ALConstants.kPincode)
+  }
+    
+  class func deletePinCode() {
+    AppLocker.removePinFromValet()
   }
 }

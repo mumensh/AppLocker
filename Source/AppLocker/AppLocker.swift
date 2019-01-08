@@ -81,6 +81,7 @@ public class AppLocker: UIViewController {
         submessageLabel.text = "Enter your passcode" // Your submessage for deactive mode
       case .validate:
         submessageLabel.text = "Enter your passcode" // Your submessage for validate mode
+        cancelButton.isHidden = true
         isFirstCreationStep = false
       }
     }

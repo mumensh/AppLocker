@@ -258,7 +258,11 @@ public extension AppLocker {
       locker.photoImageView.isHidden = true
     }
     
-    root.present(locker, animated: true, completion: nil)
+    if let presentedViewController = root.presentedViewController {
+        presentedViewController.present(locker, animated: true, completion: nil)
+    } else {
+        root.present(locker, animated: true, completion: nil)
+    }
   }
     
   class func hasPinCode() -> Bool {

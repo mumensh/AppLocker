@@ -235,9 +235,16 @@ extension AppLocker: CAAnimationDelegate {
 public extension AppLocker {
   // Present AppLocker
   class func present(with mode: ALMode, and config: ALAppearance? = nil) {
-    if let presentedViewController = UIApplication.shared.keyWindow?.rootViewController?.presentedViewController, presentedViewController.isKind(of: AppLocker.self) {
-      return
+    //Check if AppLocker viewController is in the stack of viewControllers, if it's, do not present it again
+    if var topController = UIApplication.shared.keyWindow?.rootViewController {
+      var shouldReturn = false
+      while let presentedViewController = topController.presentedViewController {
+        if presentedViewController.isKind(of: AppLocker.self) { shouldReturn = true; break }
+          topController = presentedViewController
+        }
+      if shouldReturn { return }
     }
+    //Check if AppLocker view controller can be initiated
     guard let root = UIApplication.shared.keyWindow?.rootViewController,
           let locker = Bundle(for: self.classForCoder()).loadNibNamed(ALConstants.nibName, owner: self, options: nil)?.first as? AppLocker else {
         return

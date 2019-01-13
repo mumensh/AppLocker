@@ -59,6 +59,7 @@ public class AppLocker: UIViewController {
   private var pin = "" // Entered pincode
   private var reservedPin = "" // Reserve pincode for confirm
   private var isFirstCreationStep = true
+  private static var sensorCanceled = false
   private var savedPin: String? {
     get {
       return AppLocker.valet.string(forKey: ALConstants.kPincode)
@@ -202,6 +203,8 @@ public class AppLocker: UIViewController {
     context.evaluatePolicy(policy, localizedReason: ALConstants.kLocalizedReason, reply: {  success, error in
       if success {
         self.dismiss(animated: true, completion: nil)
+      } else if let error = error, error._code != LAError.authenticationFailed.rawValue {
+        AppLocker.sensorCanceled = true
       }
     })
   }
@@ -232,11 +235,14 @@ extension AppLocker: CAAnimationDelegate {
 public extension AppLocker {
   // Present AppLocker
   class func present(with mode: ALMode, and config: ALAppearance? = nil) {
+    if let presentedViewController = UIApplication.shared.keyWindow?.rootViewController?.presentedViewController, presentedViewController.isKind(of: AppLocker.self) {
+      return
+    }
     guard let root = UIApplication.shared.keyWindow?.rootViewController,
-
-      let locker = Bundle(for: self.classForCoder()).loadNibNamed(ALConstants.nibName, owner: self, options: nil)?.first as? AppLocker else {
+          let locker = Bundle(for: self.classForCoder()).loadNibNamed(ALConstants.nibName, owner: self, options: nil)?.first as? AppLocker else {
         return
     }
+    AppLocker.sensorCanceled = false
     locker.messageLabel.text = config?.title ?? ""
     locker.messageLabel.textColor = config?.foregroundColor ?? .black
     locker.submessageLabel.text = config?.subtitle ?? ""
@@ -248,7 +254,7 @@ public extension AppLocker {
     locker.deleteButton.setTitleColor(config?.foregroundColor ?? .black, for: .normal)
     locker.mode = mode
     
-    if config?.isSensorsEnabled ?? false {
+    if config?.isSensorsEnabled ?? false && !AppLocker.sensorCanceled {
       locker.checkSensors()
     }
     

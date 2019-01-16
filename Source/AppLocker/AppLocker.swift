@@ -11,8 +11,7 @@ import AudioToolbox
 import LocalAuthentication
 import Valet
 
-public enum ALConstants {
-  static let nibName = "AppLocker"
+internal enum ALConstants {
   static let kPincode = "pincode" // Key for saving pincode to keychain
   static let kLocalizedReason = "Unlock with sensor" // Your message when sensors must be shown
   static let duration = 0.3 // Duration of indicator filling
@@ -22,6 +21,20 @@ public enum ALConstants {
     case delete = 1000
     case cancel = 1001
   }
+    
+  static func getNibName(forType type: PinCodeType) -> String {
+    switch type {
+    case .numeric:
+      return "AppLocker"
+    case .alphanumeric:
+      return "AppLocker-Alphanumeric"
+    }
+  }
+}
+
+public enum PinCodeType {
+  case numeric
+  case alphanumeric
 }
 
 public struct ALAppearance { // The structure used to display the controller
@@ -32,6 +45,7 @@ public struct ALAppearance { // The structure used to display the controller
   public var foregroundColor: UIColor?
   public var hightlightColor: UIColor?
   public var isSensorsEnabled: Bool?
+  public var pincodeType: PinCodeType = .numeric
   public init() {}
 }
 
@@ -60,7 +74,8 @@ public class AppLocker: UIViewController {
   private var reservedPin = "" // Reserve pincode for confirm
   private var isFirstCreationStep = true
   private static var sensorCanceled = false
-  private var savedPin: String? {
+  private var pinCodeType: PinCodeType = .numeric
+  fileprivate static var savedPin: String? {
     get {
       return AppLocker.valet.string(forKey: ALConstants.kPincode)
     }
@@ -87,13 +102,35 @@ public class AppLocker: UIViewController {
       }
     }
   }
+    
+  public override func viewDidAppear(_ animated: Bool) {
+    super.viewDidAppear(animated)
+        
+    if pinCodeType == .alphanumeric {
+      let tapGesture = UITapGestureRecognizer(target: self, action: #selector(onTap))
+      self.view.addGestureRecognizer(tapGesture)
+      self.view.isUserInteractionEnabled = true
+      self.becomeFirstResponder()
+    }
+  }
+    
+  public override func viewWillDisappear(_ animated: Bool) {
+    super.viewWillDisappear(animated)
+    self.view.gestureRecognizers?.forEach(self.view.removeGestureRecognizer)
+  }
+    
+  @objc fileprivate func onTap() {
+    if pinCodeType == .alphanumeric {
+      self.becomeFirstResponder()
+    }
+  }
   
   private func precreateSettings () { // Precreate settings for change mode
     mode = .create
     clearView()
   }
   
-  private func drawing(isNeedClear: Bool, tag: Int? = nil) { // Fill or cancel fill for indicators
+  private func drawing(isNeedClear: Bool, tag: String? = nil) { // Fill or cancel fill for indicators
     let results = pinIndicators.filter { $0.isNeedClear == isNeedClear }
     let pinView = isNeedClear ? results.last : results.first
     pinView?.isNeedClear = !isNeedClear
@@ -101,13 +138,13 @@ public class AppLocker: UIViewController {
     UIView.animate(withDuration: ALConstants.duration, animations: {
       pinView?.backgroundColor = isNeedClear ? .clear : pinView?.highlightedBackgroundColor
     }) { _ in
-      isNeedClear ? self.pin = String(self.pin.dropLast()) : self.pincodeChecker(tag ?? 0)
+      isNeedClear ? self.pin = String(self.pin.dropLast()) : self.pincodeChecker(tag ?? "0")
     }
   }
   
-  private func pincodeChecker(_ pinNumber: Int) {
+  private func pincodeChecker(_ pinNumber: String) {
     if pin.count < ALConstants.maxPinLength {
-      pin.append("\(pinNumber)")
+      pin.append(pinNumber)
       if pin.count == ALConstants.maxPinLength {
         switch mode ?? .validate {
         case .create:
@@ -136,15 +173,15 @@ public class AppLocker: UIViewController {
   }
   
   private func changeModeAction() {
-    pin == savedPin ? precreateSettings() : incorrectPinAnimation()
+    pin == AppLocker.savedPin ? precreateSettings() : incorrectPinAnimation()
   }
   
   private func deactiveModeAction() {
-    pin == savedPin ? removePin() : incorrectPinAnimation()
+    pin == AppLocker.savedPin ? removePin() : incorrectPinAnimation()
   }
   
   private func validateModeAction() {
-    pin == savedPin ? dismiss(animated: true, completion: nil) : incorrectPinAnimation()
+    pin == AppLocker.savedPin ? dismiss(animated: true, completion: nil) : incorrectPinAnimation()
   }
   
   private func removePin() {
@@ -158,7 +195,7 @@ public class AppLocker: UIViewController {
   
   private func confirmPin() {
     if pin == reservedPin {
-      savedPin = pin
+      AppLocker.savedPin = pin
       dismiss(animated: true, completion: nil)
     } else {
       incorrectPinAnimation()
@@ -201,10 +238,12 @@ public class AppLocker: UIViewController {
     
     // The user is able to use his/her Touch ID / Face ID 👍
     context.evaluatePolicy(policy, localizedReason: ALConstants.kLocalizedReason, reply: {  success, error in
-      if success {
-        self.dismiss(animated: true, completion: nil)
-      } else if let error = error, error._code != LAError.authenticationFailed.rawValue {
-        AppLocker.sensorCanceled = true
+      DispatchQueue.main.async {
+        if success {
+          self.dismiss(animated: true, completion: nil)
+        } else if let error = error, error._code != LAError.authenticationFailed.rawValue {
+          AppLocker.sensorCanceled = true
+        }
       }
     })
   }
@@ -218,7 +257,7 @@ public class AppLocker: UIViewController {
       clearView()
       dismiss(animated: true, completion: nil)
     default:
-      drawing(isNeedClear: false, tag: sender.tag)
+      drawing(isNeedClear: false, tag: "\(sender.tag)")
     }
   }
   
@@ -229,6 +268,26 @@ extension AppLocker: CAAnimationDelegate {
   public func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
     clearView()
   }
+}
+
+extension AppLocker: UIKeyInput {
+  public var hasText: Bool {
+    return self.pin.count > 0
+  }
+    
+  public func insertText(_ text: String) {
+    if text == "\n" { self.resignFirstResponder(); return }
+    drawing(isNeedClear: false, tag: text)
+  }
+    
+  public func deleteBackward() {
+    drawing(isNeedClear: true)
+  }
+    
+  public override var canBecomeFirstResponder: Bool { return pinCodeType == .alphanumeric }
+    
+  public var autocorrectionType: UITextAutocorrectionType { get { return .no } set { assertionFailure() } }
+  public var keyboardType: UIKeyboardType { get { return .namePhonePad } set { assertionFailure() } }
 }
 
 // MARK: - Present
@@ -244,22 +303,32 @@ public extension AppLocker {
         }
       if shouldReturn { return }
     }
+    
+    //Determine if saved pin is Alphanumeric or Numeric
+    var pinType: PinCodeType = config?.pincodeType ?? .numeric
+    if let savedPin = AppLocker.savedPin, savedPin.count > 0, savedPin.rangeOfCharacter(from: CharacterSet.letters) != nil {
+      pinType = .alphanumeric
+    }
     //Check if AppLocker view controller can be initiated
     guard let root = UIApplication.shared.keyWindow?.rootViewController,
-          let locker = Bundle(for: self.classForCoder()).loadNibNamed(ALConstants.nibName, owner: self, options: nil)?.first as? AppLocker else {
+          let locker = Bundle(for: self.classForCoder()).loadNibNamed(ALConstants.getNibName(forType: pinType), owner: self, options: nil)?.first as? AppLocker else {
         return
     }
     AppLocker.sensorCanceled = false
+    locker.pinCodeType = pinType
     locker.messageLabel.text = config?.title ?? ""
     locker.messageLabel.textColor = config?.foregroundColor ?? .black
     locker.submessageLabel.text = config?.subtitle ?? ""
     locker.submessageLabel.textColor = config?.foregroundColor ?? .black
     locker.view.backgroundColor = config?.backgroundColor ?? .white
-    locker.pinNumbers.forEach({ $0.setTitleColor(config?.foregroundColor ?? .black, for: .normal); $0.setTitleColor(config?.hightlightColor ?? .white, for: .highlighted); $0.setBackgroundColor(color: config?.hightlightColor ?? .white, forState: .highlighted) })
     locker.pinIndicators.forEach({ $0.highlightedBackgroundColor = config?.hightlightColor })
     locker.cancelButton.setTitleColor(config?.foregroundColor ?? .black, for: .normal)
-    locker.deleteButton.setTitleColor(config?.foregroundColor ?? .black, for: .normal)
     locker.mode = mode
+    
+    if pinType == .numeric {
+      locker.pinNumbers.forEach({ $0.setTitleColor(config?.foregroundColor ?? .black, for: .normal); $0.setTitleColor(config?.hightlightColor ?? .white, for: .highlighted); $0.setBackgroundColor(color: config?.hightlightColor ?? .white, forState: .highlighted) })
+      locker.deleteButton.setTitleColor(config?.foregroundColor ?? .black, for: .normal)
+    }
     
     if config?.isSensorsEnabled ?? false && !AppLocker.sensorCanceled {
       locker.checkSensors()

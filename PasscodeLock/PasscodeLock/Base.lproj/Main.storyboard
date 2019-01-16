@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="r0k-Kp-WSv">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="r0k-Kp-WSv">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -21,6 +21,21 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Numeric" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dnR-JI-C39">
+                                <rect key="frame" x="86.5" y="63" width="64.5" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uE0-T8-nI9">
+                                <rect key="frame" x="163" y="58" width="51" height="31"/>
+                            </switch>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Alphanumeric" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bOb-7Z-5hM">
+                                <rect key="frame" x="224" y="63" width="105.5" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9qs-i3-GTl">
                                 <rect key="frame" x="147.5" y="120" width="80" height="80"/>
                                 <constraints>
@@ -68,16 +83,25 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="bOb-7Z-5hM" firstAttribute="centerY" secondItem="uE0-T8-nI9" secondAttribute="centerY" id="0Nc-ww-ZwR"/>
+                            <constraint firstItem="uE0-T8-nI9" firstAttribute="leading" secondItem="dnR-JI-C39" secondAttribute="trailing" constant="12" id="4Qw-Va-q5n"/>
                             <constraint firstItem="Gd6-Gw-rcM" firstAttribute="centerX" secondItem="9qs-i3-GTl" secondAttribute="centerX" id="51B-gg-ESV"/>
                             <constraint firstItem="1oX-gg-R8q" firstAttribute="centerX" secondItem="9qs-i3-GTl" secondAttribute="centerX" id="5ah-He-27K"/>
+                            <constraint firstItem="uE0-T8-nI9" firstAttribute="centerX" secondItem="nPW-CM-2Tj" secondAttribute="centerX" id="CIC-Ul-ek7"/>
                             <constraint firstItem="9qs-i3-GTl" firstAttribute="centerX" secondItem="nPW-CM-2Tj" secondAttribute="centerX" id="IIo-ap-bFi"/>
                             <constraint firstItem="EqD-3d-kRB" firstAttribute="top" secondItem="1oX-gg-R8q" secondAttribute="bottom" constant="8" id="Jfd-xF-nHF"/>
+                            <constraint firstItem="bOb-7Z-5hM" firstAttribute="leading" secondItem="uE0-T8-nI9" secondAttribute="trailing" constant="12" id="QVY-sP-Ca0"/>
+                            <constraint firstItem="dnR-JI-C39" firstAttribute="centerY" secondItem="uE0-T8-nI9" secondAttribute="centerY" id="U80-h0-iiH"/>
                             <constraint firstItem="9qs-i3-GTl" firstAttribute="top" secondItem="aEn-63-DYg" secondAttribute="bottom" constant="100" id="fzf-1U-Tos"/>
+                            <constraint firstItem="9qs-i3-GTl" firstAttribute="top" secondItem="uE0-T8-nI9" secondAttribute="bottom" constant="31" id="geu-7G-DFv"/>
                             <constraint firstItem="EqD-3d-kRB" firstAttribute="centerX" secondItem="9qs-i3-GTl" secondAttribute="centerX" id="ndy-DC-BCn"/>
                             <constraint firstItem="1oX-gg-R8q" firstAttribute="top" secondItem="9qs-i3-GTl" secondAttribute="bottom" constant="8" id="vkC-bf-9IG"/>
                             <constraint firstItem="Gd6-Gw-rcM" firstAttribute="top" secondItem="EqD-3d-kRB" secondAttribute="bottom" constant="8" id="wax-XG-08c"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="pinType" destination="uE0-T8-nI9" id="hqD-cQ-aul"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bd9-Yn-U7p" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

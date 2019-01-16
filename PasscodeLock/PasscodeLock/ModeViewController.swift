@@ -10,7 +10,8 @@ import UIKit
 
 class ModeViewController: UIViewController {
 
-  @IBAction func createMode(_ sender: UIButton) {
+    @IBOutlet weak var pinType: UISwitch!
+    @IBAction func createMode(_ sender: UIButton) {
     pin(.create)
   }
   
@@ -32,7 +33,10 @@ class ModeViewController: UIViewController {
     appearance.image = UIImage(named: "face")!
     appearance.title = "Devios Ryasnoy"
     appearance.isSensorsEnabled = true
-    
+    appearance.pincodeType = pinType.isOn ? .alphanumeric : .numeric
+    appearance.backgroundColor = .white
+    appearance.foregroundColor = .black
+    appearance.hightlightColor = .blue
     AppLocker.present(with: mode, and: appearance)
   }
 

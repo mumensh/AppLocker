@@ -17,9 +17,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     return true
   }
     
-    func applicationDidBecomeActive(_ application: UIApplication) {
-        // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-        //Check if there is a saved pin code
+    func applicationWillEnterForeground(_ application: UIApplication) {
+        // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
         if AppLocker.hasPinCode() {
             var config: ALAppearance = ALAppearance()
             config.backgroundColor = .white

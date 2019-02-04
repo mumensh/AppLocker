@@ -90,6 +90,7 @@ public class AppLocker: UIViewController {
       let mode = self.mode ?? .validate
       switch mode {
       case .create:
+        cancelButton.isHidden = true
         submessageLabel.text = "Create your passcode" // Your submessage for create mode
       case .change:
         submessageLabel.text = "Enter your passcode" // Your submessage for change mode

@@ -15,7 +15,7 @@ internal enum ALConstants {
   static let kPincode = "pincode" // Key for saving pincode to keychain
   static let kLocalizedReason = "Unlock with sensor" // Your message when sensors must be shown
   static let duration = 0.3 // Duration of indicator filling
-  static let maxPinLength = 4
+  static let maxPinLength = 5
   
   enum button: Int {
     case delete = 1000

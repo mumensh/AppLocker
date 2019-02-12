@@ -38,54 +38,44 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Sbb-7t-uEY">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q2G-Yk-BYj">
                                 <rect key="frame" x="8" y="199" width="359" height="28"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FyS-3p-5nO" userLabel="first" customClass="Indicator" customModule="PasscodeLock" customModuleProvider="target">
-                                        <rect key="frame" x="105" y="7" width="13.5" height="14"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Z7-RX-P48" userLabel="first" customClass="Indicator" customModule="PasscodeLock" customModuleProvider="target">
+                                        <rect key="frame" x="121.5" y="7" width="14" height="14"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" secondItem="FyS-3p-5nO" secondAttribute="height" multiplier="1:1" id="pVz-eG-si5"/>
+                                            <constraint firstAttribute="width" secondItem="9Z7-RX-P48" secondAttribute="height" multiplier="1:1" id="3d0-6w-AtU"/>
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="string" keyPath="accessibilityHint" value="kRoundKey"/>
                                         </userDefinedRuntimeAttributes>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hLY-PF-jcM" userLabel="second" customClass="Indicator" customModule="PasscodeLock" customModuleProvider="target">
-                                        <rect key="frame" x="138.5" y="7" width="14" height="14"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e9V-ZP-9SG" userLabel="second" customClass="Indicator" customModule="PasscodeLock" customModuleProvider="target">
+                                        <rect key="frame" x="155.5" y="7" width="14" height="14"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" secondItem="hLY-PF-jcM" secondAttribute="height" multiplier="1:1" id="eLw-P9-Pte"/>
+                                            <constraint firstAttribute="width" secondItem="e9V-ZP-9SG" secondAttribute="height" multiplier="1:1" id="Wyw-es-bC8"/>
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="string" keyPath="accessibilityHint" value="kRoundKey"/>
                                         </userDefinedRuntimeAttributes>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hIv-RD-GRc" userLabel="third" customClass="Indicator" customModule="PasscodeLock" customModuleProvider="target">
-                                        <rect key="frame" x="172.5" y="7" width="14" height="14"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P62-gS-rwB" userLabel="third" customClass="Indicator" customModule="PasscodeLock" customModuleProvider="target">
+                                        <rect key="frame" x="189.5" y="7" width="14" height="14"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" secondItem="hIv-RD-GRc" secondAttribute="height" multiplier="1:1" id="YZD-QT-v8L"/>
+                                            <constraint firstAttribute="width" secondItem="P62-gS-rwB" secondAttribute="height" multiplier="1:1" id="5o1-Lf-UGr"/>
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="string" keyPath="accessibilityHint" value="kRoundKey"/>
                                         </userDefinedRuntimeAttributes>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BxA-22-GO6" userLabel="four" customClass="Indicator" customModule="PasscodeLock" customModuleProvider="target">
-                                        <rect key="frame" x="206.5" y="7" width="14" height="14"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="t8B-9I-VPT" userLabel="four" customClass="Indicator" customModule="PasscodeLock" customModuleProvider="target">
+                                        <rect key="frame" x="223.5" y="7" width="14" height="14"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" secondItem="BxA-22-GO6" secondAttribute="height" multiplier="1:1" id="BwA-ih-NzG"/>
-                                        </constraints>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="string" keyPath="accessibilityHint" value="kRoundKey"/>
-                                        </userDefinedRuntimeAttributes>
-                                    </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lMv-9p-y48" userLabel="five" customClass="Indicator" customModule="PasscodeLock" customModuleProvider="target">
-                                        <rect key="frame" x="240.5" y="7" width="13.5" height="14"/>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" secondItem="lMv-9p-y48" secondAttribute="height" multiplier="1:1" id="Jd0-OA-tBd"/>
+                                            <constraint firstAttribute="width" secondItem="t8B-9I-VPT" secondAttribute="height" multiplier="1:1" id="jfd-2X-9CM"/>
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="string" keyPath="accessibilityHint" value="kRoundKey"/>
@@ -94,21 +84,18 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="BxA-22-GO6" firstAttribute="centerY" secondItem="FyS-3p-5nO" secondAttribute="centerY" id="4Vh-a1-eEc"/>
-                                    <constraint firstItem="hLY-PF-jcM" firstAttribute="centerY" secondItem="FyS-3p-5nO" secondAttribute="centerY" id="Do0-Iu-CNc"/>
-                                    <constraint firstItem="hIv-RD-GRc" firstAttribute="height" secondItem="Sbb-7t-uEY" secondAttribute="height" multiplier="1:2" id="IXw-IP-FaD"/>
-                                    <constraint firstItem="hIv-RD-GRc" firstAttribute="leading" secondItem="hLY-PF-jcM" secondAttribute="trailing" constant="20" id="Lyc-DT-ezA"/>
-                                    <constraint firstItem="hIv-RD-GRc" firstAttribute="centerX" secondItem="Sbb-7t-uEY" secondAttribute="centerX" id="NoF-Sd-TKs"/>
-                                    <constraint firstItem="hIv-RD-GRc" firstAttribute="centerY" secondItem="FyS-3p-5nO" secondAttribute="centerY" id="Qqp-2S-p8k"/>
-                                    <constraint firstItem="BxA-22-GO6" firstAttribute="height" secondItem="hIv-RD-GRc" secondAttribute="height" id="RBk-pv-AAX"/>
-                                    <constraint firstItem="lMv-9p-y48" firstAttribute="height" secondItem="BxA-22-GO6" secondAttribute="height" id="RsE-OG-IFD"/>
-                                    <constraint firstItem="FyS-3p-5nO" firstAttribute="height" secondItem="hIv-RD-GRc" secondAttribute="height" id="Tn0-CT-Wpq"/>
-                                    <constraint firstItem="lMv-9p-y48" firstAttribute="centerY" secondItem="BxA-22-GO6" secondAttribute="centerY" id="ax0-JT-xa4"/>
-                                    <constraint firstItem="BxA-22-GO6" firstAttribute="leading" secondItem="hIv-RD-GRc" secondAttribute="trailing" constant="20" id="czf-Hu-zNL"/>
-                                    <constraint firstItem="lMv-9p-y48" firstAttribute="leading" secondItem="BxA-22-GO6" secondAttribute="trailing" constant="20" id="nts-rw-SAd"/>
-                                    <constraint firstItem="hLY-PF-jcM" firstAttribute="height" secondItem="hIv-RD-GRc" secondAttribute="height" id="oMv-l5-VWL"/>
-                                    <constraint firstItem="hLY-PF-jcM" firstAttribute="leading" secondItem="FyS-3p-5nO" secondAttribute="trailing" constant="20" id="pw9-14-UUs"/>
-                                    <constraint firstItem="hIv-RD-GRc" firstAttribute="centerY" secondItem="Sbb-7t-uEY" secondAttribute="centerY" id="y43-bI-QWk"/>
+                                    <constraint firstItem="e9V-ZP-9SG" firstAttribute="trailing" secondItem="q2G-Yk-BYj" secondAttribute="centerX" constant="-10" id="9cb-rH-RCq"/>
+                                    <constraint firstItem="t8B-9I-VPT" firstAttribute="leading" secondItem="P62-gS-rwB" secondAttribute="trailing" constant="20" id="AYL-B4-Eco"/>
+                                    <constraint firstItem="9Z7-RX-P48" firstAttribute="height" secondItem="t8B-9I-VPT" secondAttribute="height" id="BkX-XR-uO0"/>
+                                    <constraint firstItem="e9V-ZP-9SG" firstAttribute="centerY" secondItem="q2G-Yk-BYj" secondAttribute="centerY" id="Dm0-Oj-hoY"/>
+                                    <constraint firstItem="P62-gS-rwB" firstAttribute="centerY" secondItem="9Z7-RX-P48" secondAttribute="centerY" id="J4r-cf-Syu"/>
+                                    <constraint firstItem="t8B-9I-VPT" firstAttribute="height" secondItem="q2G-Yk-BYj" secondAttribute="height" multiplier="1:2" id="J8t-76-63V"/>
+                                    <constraint firstItem="e9V-ZP-9SG" firstAttribute="leading" secondItem="9Z7-RX-P48" secondAttribute="trailing" constant="20" id="b7p-pQ-V08"/>
+                                    <constraint firstItem="P62-gS-rwB" firstAttribute="height" secondItem="t8B-9I-VPT" secondAttribute="height" id="bg7-c5-0TL"/>
+                                    <constraint firstItem="e9V-ZP-9SG" firstAttribute="height" secondItem="t8B-9I-VPT" secondAttribute="height" id="gqa-T3-WUP"/>
+                                    <constraint firstItem="e9V-ZP-9SG" firstAttribute="centerY" secondItem="9Z7-RX-P48" secondAttribute="centerY" id="i3b-5E-o5n"/>
+                                    <constraint firstItem="t8B-9I-VPT" firstAttribute="centerY" secondItem="9Z7-RX-P48" secondAttribute="centerY" id="iNx-g5-dhL"/>
+                                    <constraint firstItem="P62-gS-rwB" firstAttribute="leading" secondItem="q2G-Yk-BYj" secondAttribute="centerX" constant="10" id="y5e-WV-mr9"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="submessage" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tWv-sF-It4">
@@ -121,19 +108,19 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="tWv-sF-It4" firstAttribute="leading" secondItem="UU6-6B-NKL" secondAttribute="leading" constant="8" id="2Pz-8B-VR9"/>
-                            <constraint firstItem="Sbb-7t-uEY" firstAttribute="top" secondItem="tWv-sF-It4" secondAttribute="bottom" constant="8" id="38p-0d-GIe"/>
                             <constraint firstItem="Hp9-kC-iCa" firstAttribute="centerX" secondItem="UU6-6B-NKL" secondAttribute="centerX" id="5Ed-ey-j2F"/>
                             <constraint firstItem="Xor-Ws-hWf" firstAttribute="top" secondItem="Hp9-kC-iCa" secondAttribute="bottom" constant="8" id="6qW-dP-fKX"/>
-                            <constraint firstItem="Sbb-7t-uEY" firstAttribute="leading" secondItem="UU6-6B-NKL" secondAttribute="leading" constant="8" id="93x-nR-LiE"/>
-                            <constraint firstItem="Sbb-7t-uEY" firstAttribute="height" secondItem="UU6-6B-NKL" secondAttribute="height" multiplier="1:8" id="L78-X2-ZBN"/>
+                            <constraint firstItem="q2G-Yk-BYj" firstAttribute="leading" secondItem="UU6-6B-NKL" secondAttribute="leading" constant="8" id="CKo-Nv-Aqp"/>
                             <constraint firstAttribute="trailing" secondItem="Xor-Ws-hWf" secondAttribute="trailing" constant="20" id="QcL-b3-UXh"/>
-                            <constraint firstAttribute="trailing" secondItem="Sbb-7t-uEY" secondAttribute="trailing" constant="8" id="WSo-kF-KXS"/>
+                            <constraint firstAttribute="trailing" secondItem="q2G-Yk-BYj" secondAttribute="trailing" constant="8" id="ZX3-px-iKf"/>
                             <constraint firstItem="Xor-Ws-hWf" firstAttribute="centerX" secondItem="UU6-6B-NKL" secondAttribute="centerX" id="acp-BZ-hd8"/>
+                            <constraint firstItem="q2G-Yk-BYj" firstAttribute="top" secondItem="tWv-sF-It4" secondAttribute="bottom" constant="8" id="dmX-pc-Ea7"/>
                             <constraint firstAttribute="trailing" secondItem="tWv-sF-It4" secondAttribute="trailing" constant="8" id="dwu-sH-koD"/>
                             <constraint firstItem="tWv-sF-It4" firstAttribute="top" secondItem="Xor-Ws-hWf" secondAttribute="bottom" constant="8" id="kHO-Hd-VsX"/>
                             <constraint firstItem="Xor-Ws-hWf" firstAttribute="leading" secondItem="UU6-6B-NKL" secondAttribute="leading" constant="20" id="lpE-yt-6DT"/>
                             <constraint firstItem="Hp9-kC-iCa" firstAttribute="width" secondItem="UU6-6B-NKL" secondAttribute="width" multiplier="1:4.25" id="mj8-KB-dcE"/>
                             <constraint firstItem="Xor-Ws-hWf" firstAttribute="centerY" secondItem="UU6-6B-NKL" secondAttribute="centerY" constant="40" id="qsa-7o-2go"/>
+                            <constraint firstItem="q2G-Yk-BYj" firstAttribute="height" secondItem="UU6-6B-NKL" secondAttribute="height" multiplier="1:8" id="uFq-Tt-UjS"/>
                         </constraints>
                     </view>
                     <button opaque="NO" clipsSubviews="YES" tag="1001" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VFE-ek-5H9">
@@ -169,11 +156,10 @@
                 <outlet property="messageLabel" destination="Xor-Ws-hWf" id="TCO-eH-eWK"/>
                 <outlet property="photoImageView" destination="Hp9-kC-iCa" id="6pp-2c-Rkw"/>
                 <outlet property="submessageLabel" destination="tWv-sF-It4" id="mPc-TR-L51"/>
-                <outletCollection property="pinIndicators" destination="FyS-3p-5nO" collectionClass="NSMutableArray" id="NaB-Ea-bxn"/>
-                <outletCollection property="pinIndicators" destination="hLY-PF-jcM" collectionClass="NSMutableArray" id="7N7-Sq-MnC"/>
-                <outletCollection property="pinIndicators" destination="hIv-RD-GRc" collectionClass="NSMutableArray" id="eVY-bj-lEM"/>
-                <outletCollection property="pinIndicators" destination="BxA-22-GO6" collectionClass="NSMutableArray" id="sI0-Kx-omn"/>
-                <outletCollection property="pinIndicators" destination="lMv-9p-y48" collectionClass="NSMutableArray" id="g4o-gm-rmf"/>
+                <outletCollection property="pinIndicators" destination="9Z7-RX-P48" collectionClass="NSMutableArray" id="Hcd-UA-ANG"/>
+                <outletCollection property="pinIndicators" destination="e9V-ZP-9SG" collectionClass="NSMutableArray" id="aET-Ty-nMz"/>
+                <outletCollection property="pinIndicators" destination="P62-gS-rwB" collectionClass="NSMutableArray" id="8EO-Wh-2W3"/>
+                <outletCollection property="pinIndicators" destination="t8B-9I-VPT" collectionClass="NSMutableArray" id="D0w-YU-bDg"/>
             </connections>
             <point key="canvasLocation" x="308" y="83"/>
         </viewController>

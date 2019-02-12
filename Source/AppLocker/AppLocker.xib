@@ -42,7 +42,7 @@
                                 <rect key="frame" x="8" y="199" width="359" height="28"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y48-OI-bV6" userLabel="first" customClass="Indicator" customModule="PasscodeLock" customModuleProvider="target">
-                                        <rect key="frame" x="98" y="7" width="13.5" height="14"/>
+                                        <rect key="frame" x="121.5" y="7" width="14" height="14"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="y48-OI-bV6" secondAttribute="height" multiplier="1:1" id="cHE-Dp-W1T"/>
@@ -52,7 +52,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EvL-fK-aNd" userLabel="second" customClass="Indicator" customModule="PasscodeLock" customModuleProvider="target">
-                                        <rect key="frame" x="131.5" y="7" width="14" height="14"/>
+                                        <rect key="frame" x="155.5" y="7" width="14" height="14"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="EvL-fK-aNd" secondAttribute="height" multiplier="1:1" id="mWJ-SV-lPQ"/>
@@ -62,7 +62,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ty0-rX-vyo" userLabel="third" customClass="Indicator" customModule="PasscodeLock" customModuleProvider="target">
-                                        <rect key="frame" x="165.5" y="7" width="14" height="14"/>
+                                        <rect key="frame" x="189.5" y="7" width="14" height="14"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="ty0-rX-vyo" secondAttribute="height" multiplier="1:1" id="Bb2-Nk-aDy"/>
@@ -72,20 +72,10 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nQv-Y6-U7g" userLabel="four" customClass="Indicator" customModule="PasscodeLock" customModuleProvider="target">
-                                        <rect key="frame" x="199.5" y="7" width="14" height="14"/>
+                                        <rect key="frame" x="223.5" y="7" width="14" height="14"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="nQv-Y6-U7g" secondAttribute="height" multiplier="1:1" id="XIl-Rp-NHx"/>
-                                        </constraints>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="string" keyPath="accessibilityHint" value="kRoundKey"/>
-                                        </userDefinedRuntimeAttributes>
-                                    </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vh5-hC-T98" userLabel="five" customClass="Indicator" customModule="PasscodeLock" customModuleProvider="target">
-                                        <rect key="frame" x="233.5" y="7" width="14" height="14"/>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" secondItem="vh5-hC-T98" secondAttribute="height" multiplier="1:1" id="gpA-x2-hgQ"/>
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="string" keyPath="accessibilityHint" value="kRoundKey"/>
@@ -95,20 +85,17 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="EvL-fK-aNd" firstAttribute="centerY" secondItem="y48-OI-bV6" secondAttribute="centerY" id="1ef-uu-Qsi"/>
+                                    <constraint firstItem="ty0-rX-vyo" firstAttribute="leading" secondItem="6kS-ba-3rR" secondAttribute="centerX" constant="10" id="2c0-td-z5n"/>
+                                    <constraint firstItem="EvL-fK-aNd" firstAttribute="trailing" secondItem="6kS-ba-3rR" secondAttribute="centerX" constant="-10" id="3zU-Rb-9N6"/>
                                     <constraint firstItem="nQv-Y6-U7g" firstAttribute="centerY" secondItem="y48-OI-bV6" secondAttribute="centerY" id="ASt-mt-31F"/>
-                                    <constraint firstItem="vh5-hC-T98" firstAttribute="centerY" secondItem="nQv-Y6-U7g" secondAttribute="centerY" id="BfU-tN-Cyp"/>
                                     <constraint firstItem="y48-OI-bV6" firstAttribute="height" secondItem="nQv-Y6-U7g" secondAttribute="height" id="CEL-PE-fiE"/>
-                                    <constraint firstItem="vh5-hC-T98" firstAttribute="height" secondItem="nQv-Y6-U7g" secondAttribute="height" id="GER-ho-xbR"/>
                                     <constraint firstItem="nQv-Y6-U7g" firstAttribute="leading" secondItem="ty0-rX-vyo" secondAttribute="trailing" constant="20" id="Pko-LQ-ixc"/>
                                     <constraint firstItem="EvL-fK-aNd" firstAttribute="leading" secondItem="y48-OI-bV6" secondAttribute="trailing" constant="20" id="T50-Cg-ns8"/>
-                                    <constraint firstItem="ty0-rX-vyo" firstAttribute="trailing" secondItem="6kS-ba-3rR" secondAttribute="centerX" id="VVh-Fd-NEG"/>
-                                    <constraint firstItem="vh5-hC-T98" firstAttribute="leading" secondItem="nQv-Y6-U7g" secondAttribute="trailing" constant="20" id="bHT-Xd-s4K"/>
                                     <constraint firstItem="ty0-rX-vyo" firstAttribute="height" secondItem="nQv-Y6-U7g" secondAttribute="height" id="eP1-yT-ZZS"/>
                                     <constraint firstItem="EvL-fK-aNd" firstAttribute="centerY" secondItem="6kS-ba-3rR" secondAttribute="centerY" id="gVC-l7-2e8"/>
                                     <constraint firstItem="ty0-rX-vyo" firstAttribute="centerY" secondItem="y48-OI-bV6" secondAttribute="centerY" id="kne-D8-7YV"/>
                                     <constraint firstItem="EvL-fK-aNd" firstAttribute="height" secondItem="nQv-Y6-U7g" secondAttribute="height" id="qPY-vt-Y5M"/>
                                     <constraint firstItem="nQv-Y6-U7g" firstAttribute="height" secondItem="6kS-ba-3rR" secondAttribute="height" multiplier="1:2" id="rTb-Fm-qBg"/>
-                                    <constraint firstItem="ty0-rX-vyo" firstAttribute="leading" secondItem="EvL-fK-aNd" secondAttribute="trailing" constant="20" id="vui-gT-18s"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="submessage" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Yc-zm-CFr">
@@ -414,7 +401,6 @@
                 <outletCollection property="pinNumbers" destination="abq-s3-wbI" collectionClass="NSMutableArray" id="EIM-q1-8Jd"/>
                 <outletCollection property="pinNumbers" destination="cKD-qE-N40" collectionClass="NSMutableArray" id="y02-OI-G1h"/>
                 <outletCollection property="pinNumbers" destination="hQB-bP-FZg" collectionClass="NSMutableArray" id="rZD-Cz-zqR"/>
-                <outletCollection property="pinIndicators" destination="vh5-hC-T98" collectionClass="NSMutableArray" id="IDq-Gh-tCZ"/>
             </connections>
             <point key="canvasLocation" x="-212.5" y="-162.5"/>
         </viewController>

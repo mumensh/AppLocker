@@ -223,7 +223,7 @@ public class AppLocker: UIViewController {
   
   // MARK: - Touch ID / Face ID
   fileprivate func checkSensors() {
-    guard mode == .validate else {return}
+    guard mode == .validate || mode == .change else {return}
     
     var policy: LAPolicy = .deviceOwnerAuthenticationWithBiometrics // iOS 8+ users with Biometric and Custom (Fallback button) verification
     
@@ -238,10 +238,15 @@ public class AppLocker: UIViewController {
     guard context.canEvaluatePolicy(policy, error: &err) else {return}
     
     // The user is able to use his/her Touch ID / Face ID 👍
-    context.evaluatePolicy(policy, localizedReason: ALConstants.kLocalizedReason, reply: {  success, error in
+    context.evaluatePolicy(policy, localizedReason: ALConstants.kLocalizedReason, reply: { [weak self] success, error in
+      guard let self = self else { return }
       DispatchQueue.main.async {
         if success {
-          self.dismiss(animated: true, completion: nil)
+          if self.mode == .change {
+            self.precreateSettings()
+          } else {
+            self.dismiss(animated: true, completion: nil)
+          }
         } else if let error = error, error._code != LAError.authenticationFailed.rawValue {
           AppLocker.sensorCanceled = true
         }
